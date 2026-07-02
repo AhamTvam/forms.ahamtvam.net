@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Discovery | AhámTvám Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app-container">
+        
+        <!-- Landing Section -->
+        <section id="landing-view" class="view-section active">
+            <div class="landing-content">
+                <p class="pre-title">AhámTvám Media</p>
+                <h1 class="large-headline">Project Discovery Form</h1>
+                <p class="subheading">Every successful project starts with understanding your business.</p>
+                <p class="subheading-secondary">This short discovery form helps us understand your goals, challenges, and expectations so we can recommend the most suitable solution.</p>
+                
+                <div class="meta-info">
+                    <span class="estimate-label">Estimated completion time</span>
+                    <span class="estimate-time">5 Minutes</span>
+                </div>
+
+                <button id="start-btn" class="btn btn-primary btn-large">Start Discovery</button>
+            </div>
+        </section>
+
+        <!-- Multi-Step Form Section -->
+        <section id="form-view" class="view-section">
+            <div class="form-container">
+                
+                <header class="form-header">
+                    <div class="step-indicator" id="step-indicator">Step 1 of 7</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                </header>
+
+                <form id="discovery-form" novalidate>
+                    
+                    <!-- STEP 1: Basic Information -->
+                    <div class="form-step active" data-step="1">
+                        <h2>Basic Information</h2>
+                        <p class="step-desc">Let us get to know who we are speaking with.</p>
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                            <span class="error-msg">Please enter your full name.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companyName">Company Name *</label>
+                            <input type="text" id="companyName" name="companyName" required>
+                            <span class="error-msg">Please enter your company name.</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Business Email *</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-msg">Please enter a valid business email.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number *</label>
+                                <input type="tel" id="mobile" name="mobile" required>
+                                <span class="error-msg">Please enter a valid mobile number.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="website">Website (Optional)</label>
+                            <input type="url" id="website" name="website" placeholder="https://">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                                <span class="error-msg">City is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State *</label>
+                                <input type="text" id="state" name="state" required>
+                                <span class="error-msg">State is required.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <input type="text" id="country" name="country" required>
+                                <span class="error-msg">Country is required.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Business Information -->
+                    <div class="form-step" data-step="2">
+                        <h2>Business Information</h2>
+                        <p class="step-desc">Tell us about your business structure and current positioning.</p>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="businessCategory">Business Category *</label>
+                                <input type="text" id="businessCategory" name="businessCategory" required>
+                                <span class="error-msg">Please specify your business category.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="yearsInBusiness">Years in Business *</label>
+                                <input type="number" id="yearsInBusiness" name="yearsInBusiness" min="0" required>
+                                <span class="error-msg">Required.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="companySize">Company Size *</label>
+                                <select id="companySize" name="companySize" required>
+                                    <option value="" disabled selected>Select size</option>
+                                    <option value="1-10">1 - 10 Employees</option>
+                                    <option value="11-50">11 - 50 Employees</option>
+                                    <option value="51-200">51 - 200 Employees</option>
+                                    <option value="201+">201+ Employees</option>
+                                </select>
+                                <span class="error-msg">Please select your company size.</span>
+                            </div>
+                        </div>
+
+                        <fieldset class="form-group">
+                            <legend>Current Online Presence *</legend>
+                            <div class="checkbox-grid">
+                                <label class="custom-checkbox"><input type="checkbox" name="onlinePresence" value="Website"> <span>Website</span></label>
+                                <label class="custom-checkbox"><input type="checkbox" name="onlinePresence" value="Instagram"> <span>Instagram</span></label>
+                                <label class="custom-checkbox"><input type="checkbox" name="onlinePresence" value="Facebook"> <span>Facebook</span></label>
+                                <label class="custom-checkbox"><input type="checkbox" name="onlinePresence" value="LinkedIn"> <span>LinkedIn</span></label>
+                                <label class="custom-checkbox"><input type="checkbox" name="onlinePresence" value="YouTube"> <span>YouTube</span></label>
+                                <label class="custom-checkbox"><input type="checkbox" name="onlinePresence" value="Google Business Profile"> <span>Google Business Profile</span></label>
+                                <label class="custom-checkbox"><input type="checkbox" name="onlinePresence" value="None"> <span>None</span></label>
+                            </div>
+                            <span class="error-msg" id="presence-error">Please select at least one option.</span>
+                        </fieldset>
+
+                        <div class="form-group">
+                            <label for="businessDescription">Describe your business *</label>
+                            <textarea id="businessDescription" name="businessDescription" rows="4" required></textarea>
+                            <span class="error-msg">Please provide a brief description.</span>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Service Required -->
+                    <div class="form-step" data-step="3">
+                        <h2>Service Required</h2>
+                        <p class="step-desc">Select the services you require from AhámTvám Media. You can select multiple.</p>
+
+                        <fieldset class="form-group">
+                            <legend class="visually-hidden">Services</legend>
+                            <div class="cards-grid">
+                                
+                                <label class="premium-card">
+                                    <input type="checkbox" name="services" value="Video Editing" class="visually-hidden">
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <h3>Video Editing</h3>
+                                            <div class="radio-indicator"></div>
+                                        </div>
+                                        <p>Professional editing services for social media, YouTube, advertisements, corporate films, events, documentaries, and promotional content.</p>
+                                    </div>
+                                </label>
+
+                                <label class="premium-card">
+                                    <input type="checkbox" name="services" value="Design & Branding" class="visually-hidden">
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <h3>Design & Branding</h3>
+                                            <div class="radio-indicator"></div>
+                                        </div>
+                                        <p>Creative design solutions including brand identity, marketing creatives, social media graphics, print materials, and visual communication.</p>
+                                    </div>
+                                </label>
+
+                                <label class="premium-card">
+                                    <input type="checkbox" name="services" value="Social Media Management" class="visually-hidden">
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <h3>Social Media Management</h3>
+                                            <div class="radio-indicator"></div>
+                                        </div>
+                                        <p>Complete management of your social media presence through content planning, publishing, audience engagement, and community management.</p>
+                                    </div>
+                                </label>
+
+                                <label class="premium-card">
+                                    <input type="checkbox" name="services" value="Digital Marketing" class="visually-hidden">
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <h3>Digital Marketing</h3>
+                                            <div class="radio-indicator"></div>
+                                        </div>
+                                        <p>Data-driven marketing solutions including SEO, Meta Ads, Google Ads, performance marketing, and lead generation strategies to grow your business.</p>
+                                    </div>
+                                </label>
+
+                                <label class="premium-card">
+                                    <input type="checkbox" name="services" value="Content Writing" class="visually-hidden">
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <h3>Content Writing</h3>
+                                            <div class="radio-indicator"></div>
+                                        </div>
+                                        <p>Professional writing services for scripts, blogs, website content, marketing copy, articles, business documents, and digital content.</p>
+                                    </div>
+                                </label>
+
+                                <label class="premium-card">
+                                    <input type="checkbox" name="services" value="Photography & Videography" class="visually-hidden">
+                                    <div class="card-content">
+                                        <div class="card-header">
+                                            <h3>Photography & Videography</h3>
+                                            <div class="radio-indicator"></div>
+                                        </div>
+                                        <p>Professional photography and videography services for products, brands, corporate events, advertisements, promotional campaigns, and commercial productions.</p>
+                                    </div>
+                                </label>
+
+                            </div>
+                            <span class="error-msg" id="service-error">Please select at least one service.</span>
+                        </fieldset>
+                    </div>
+
+                    <!-- STEP 4: Project Requirements -->
+                    <div class="form-step" data-step="4">
+                        <h2>Project Requirements</h2>
+                        <p class="step-desc">Detailing your project helps us prepare accurately for our consultation.</p>
+
+                        <div class="form-group">
+                            <label for="projectRequirements">Tell us about your project *</label>
+                            <p class="input-prompt">Include your objectives, target audience, expectations, challenges, or anything you would like us to know.</p>
+                            <textarea id="projectRequirements" name="projectRequirements" rows="8" required></textarea>
+                            <span class="error-msg">Please provide your project details.</span>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Timeline -->
+                    <div class="form-step" data-step="5">
+                        <h2>Timeline</h2>
+                        <p class="step-desc">When are you looking to start this project?</p>
+
+                        <fieldset class="form-group">
+                            <legend class="visually-hidden">Timeline</legend>
+                            <div class="radio-list">
+                                <label class="custom-radio"><input type="radio" name="timeline" value="Immediately" required> <span>Immediately</span></label>
+                                <label class="custom-radio"><input type="radio" name="timeline" value="Within 1 Week"> <span>Within 1 Week</span></label>
+                                <label class="custom-radio"><input type="radio" name="timeline" value="Within 1 Month"> <span>Within 1 Month</span></label>
+                                <label class="custom-radio"><input type="radio" name="timeline" value="Flexible"> <span>Flexible</span></label>
+                                <label class="custom-radio"><input type="radio" name="timeline" value="Just Exploring"> <span>Just Exploring</span></label>
+                            </div>
+                            <span class="error-msg" id="timeline-error">Please select a timeline.</span>
+                        </fieldset>
+                    </div>
+
+                    <!-- STEP 6: Budget -->
+                    <div class="form-step" data-step="6">
+                        <h2>Budget</h2>
+                        <p class="step-desc">Understanding your budget helps us recommend the most viable solutions.</p>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projectType">Project Type *</label>
+                                <select id="projectType" name="projectType" required>
+                                    <option value="" disabled selected>Select project type</option>
+                                    <option value="One-Time Project">One-Time Project</option>
+                                    <option value="Monthly Partnership">Monthly Partnership</option>
+                                    <option value="Not Sure">Not Sure</option>
+                                </select>
+                                <span class="error-msg">Please select a project type.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="estimatedBudget">Estimated Budget (INR) *</label>
+                                <select id="estimatedBudget" name="estimatedBudget" required>
+                                    <option value="" disabled selected>Select estimated budget</option>
+                                    <option value="Under ₹10,000">Under ₹10,000</option>
+                                    <option value="₹10,000 – ₹25,000">₹10,000 – ₹25,000</option>
+                                    <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
+                                    <option value="₹50,000 – ₹1,00,000">₹50,000 – ₹1,00,000</option>
+                                    <option value="₹1,00,000 – ₹2,50,000">₹1,00,000 – ₹2,50,000</option>
+                                    <option value="Above ₹2,50,000">Above ₹2,50,000</option>
+                                    <option value="Need Recommendation">Need Recommendation</option>
+                                </select>
+                                <span class="error-msg">Please select an estimated budget.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 7: Final Questions -->
+                    <div class="form-step" data-step="7">
+                        <h2>Final Questions</h2>
+                        <p class="step-desc">Just a few last details before we wrap up.</p>
+
+                        <div class="form-group">
+                            <label for="source">How did you hear about us? *</label>
+                            <select id="source" name="source" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Google">Google</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="YouTube">YouTube</option>
+                                <option value="Referral">Referral</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="error-msg">Please tell us how you found us.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalComments">Additional Comments</label>
+                            <textarea id="additionalComments" name="additionalComments" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="custom-checkbox policy-checkbox">
+                                <input type="checkbox" name="privacyPolicy" id="privacyPolicy" required> 
+                                <span>I agree to the Privacy Policy. *</span>
+                            </label>
+                            <span class="error-msg" id="policy-error">You must agree to the privacy policy to proceed.</span>
+                        </div>
+                    </div>
+
+                    <!-- Form Navigation -->
+                    <div class="form-footer">
+                        <button type="button" id="prev-btn" class="btn btn-secondary hidden">Previous</button>
+                        <button type="button" id="next-btn" class="btn btn-primary">Next</button>
+                        <button type="submit" id="submit-btn" class="btn btn-primary hidden">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <!-- Success Section -->
+        <section id="success-view" class="view-section">
+            <div class="success-content">
+                <div class="success-animation">
+                    <svg viewBox="0 0 52 52">
+                        <circle class="circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <h1 class="large-headline">Thank You.</h1>
+                <p class="subheading-secondary">We have successfully received your project details.</p>
+                <p class="subheading-secondary">Our team will carefully review your requirements and contact you within 24 business hours.</p>
+                
+                <div class="success-actions">
+                    <button class="btn btn-secondary" onclick="location.reload()">Return Home</button>
+                    <a href="https://ahamtvam.net" class="btn btn-primary">Visit AhámTvám Media</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="scirpt.js"></script>
+</body>
+</html>
