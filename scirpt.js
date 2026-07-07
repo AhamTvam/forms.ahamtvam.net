@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             submitBtn.disabled = true;
 
             // PASTE YOUR GOOGLE LINK BETWEEN THE QUOTES BELOW:
-            const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbwguKp-jwfM7K5Dp5oKHQ_kAfs1xSisquZNmZGMmgJWbXqyNrJ43BhZVHQiu14niGbZ/exec"; 
+            const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxuu0hajL8pDlfh_sTH-BdmBmLe1t7IdpHHLP5DP9peoO3ynYPD00hAonm-MXrEBbS7/exec"; 
             
             // Gather all form data
             const formData = new FormData(form);
