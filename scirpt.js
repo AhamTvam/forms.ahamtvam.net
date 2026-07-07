@@ -44,8 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Real-time validation removal and auto-save on change
         if (form) {
-            form.addEventListener('input', (e) => {
+            form.addEventListener('change', (e) => {
                 saveProgress();
+                calculateEstimatedBudget();
                 
                 // Remove error class on input
                 if (e.target.closest('.form-group')) {
@@ -308,8 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function calculateEstimatedBudget() {
         if (!form) return;
 
-        // 1. Base Prices using Sugreeva (Intermediate) tier for safe estimation
-        // For Digital Marketing, we use the Vaali base (44k) because it is already a premium package.
+        // 1. Base Prices using Sugreeva (Intermediate) tier
         const servicePrices = {
             "Video Editing": 3299,
             "Design & Branding": 12000, 
@@ -319,41 +319,46 @@ document.addEventListener("DOMContentLoaded", () => {
             "Photography & Videography": 8000
         };
 
-        // 2. Timeline Multipliers (Rush jobs bump them into higher budget brackets)
         const timelineMultipliers = {
-            "Immediately": 1.5,      // 50% rush premium
-            "Within 1 Week": 1.25,   // 25% rush premium
-            "Within 1 Month": 1.0,   // Standard price
-            "Flexible": 0.9,         // 10% discount allowance
+            "Immediately": 1.5,
+            "Within 1 Week": 1.25,
+            "Within 1 Month": 1.0,
+            "Flexible": 0.9,
             "Just Exploring": 1.0
         };
 
-        // 3. Gather currently selected values
+        // 2. Safely gather currently selected values
         const selectedServices = Array.from(form.querySelectorAll('input[name="services"]:checked')).map(cb => cb.value);
-        const selectedTimeline = form.querySelector('input[name="timeline"]:checked');
-        const projectType = form.querySelector('select[name="projectType"]').value;
+        
+        const timelineEl = form.querySelector('input[name="timeline"]:checked');
+        const selectedTimeline = timelineEl ? timelineEl.value : null;
 
-        // 4. Calculate Base Total
+        const projectTypeEl = form.querySelector('select[name="projectType"]');
+        const projectType = projectTypeEl ? projectTypeEl.value : "";
+
+        // 3. Calculate Base Total
         let total = 0;
         selectedServices.forEach(service => {
             if (servicePrices[service]) total += servicePrices[service];
         });
 
-        // 5. Apply Multipliers
-        if (selectedTimeline && timelineMultipliers[selectedTimeline.value]) {
-            total = total * timelineMultipliers[selectedTimeline.value];
+        // 4. Apply Multipliers
+        if (selectedTimeline && timelineMultipliers[selectedTimeline]) {
+            total = total * timelineMultipliers[selectedTimeline];
         }
         
-        // If they select "Monthly Partnership" but only picked a one-off service like Video Editing, 
-        // we multiply by 3 to estimate a minimum 3-month retainer budget.
         if (projectType === "Monthly Partnership" && !selectedServices.includes("Digital Marketing") && !selectedServices.includes("Social Media Management")) {
             total = total * 3; 
         }
 
-        // 6. Auto-Select the dropdown in Step 6 based on the total
-        const budgetDropdown = document.getElementById('estimatedBudget');
-        if (total === 0) return; // Do nothing if nothing is selected
+        // --- WATCH IT WORK LIVE IN YOUR CONSOLE ---
+        console.log(`AI Calc -> Services: ${selectedServices.length} | Timeline: ${selectedTimeline} | Type: ${projectType} | TOTAL: ₹${total}`);
 
+        // 5. Auto-Select the dropdown
+        const budgetDropdown = document.getElementById('estimatedBudget');
+        if (!budgetDropdown || total === 0) return; 
+
+        // 6. Match exact dropdown strings
         if (total < 10000) {
             budgetDropdown.value = "Under ₹10,000";
         } else if (total >= 10000 && total <= 25000) {
